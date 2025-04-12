@@ -1,3 +1,4 @@
+import os
 import random
 import json
 
@@ -12,6 +13,9 @@ with open('intents.json', 'r') as json_data:
     intents = json.load(json_data)
 
 FILE = "data.pth"
+if not os.path.exists(FILE):
+    print(f"{FILE} file not found!")
+    exit()
 data = torch.load(FILE)
 
 input_size = data["input_size"]
